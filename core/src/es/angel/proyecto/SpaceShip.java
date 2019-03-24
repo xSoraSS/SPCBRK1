@@ -38,8 +38,8 @@ public class SpaceShip {
             }
         }else if (mover && derecha){
             myShip.translateX(1.5f);
-            if ((myShip.getX() + myShip.getWidth()) > Gdx.app.getGraphics().getWidth()){
-                myShip.setX(Gdx.app.getGraphics().getWidth() - myShip.getWidth());
+            if ((myShip.getX() + myShip.getWidth()) > Gdx.graphics.getWidth()){
+                myShip.setX(Gdx.graphics.getWidth() - myShip.getWidth());
             }
         }
     }

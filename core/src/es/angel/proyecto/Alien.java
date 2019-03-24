@@ -48,12 +48,19 @@ public class Alien {
         float appGW = Gdx.app.getGraphics().getWidth();
         if (myAlien.getX() > 0) {
             myAlien.translateX(-1.5f);
-        } else {
-            while (myAlien.getX() < Gdx.graphics.getWidth()) {
-                myAlien.setX(1.5f);
+            if (myAlien.getX() < 0) {
+                myAlien.translateY(-20f);
+            }
+        } else if (myAlien.getX() > 0 && alienXW < appGW){
+            if (alienXW < appGW) {
+                myAlien.translateX(1.5f);
             }
         }
+//        else if (myAlien.getX() != appGW){
+//            myAlien.translateX(1.5f);
+//        }
     }
+
 // Hola
 //        myAlien.setX(1.5f);
 //        if((myAlien.getX() + myAlien.getWidth()) > Gdx.app.getGraphics().getWidth()) {
