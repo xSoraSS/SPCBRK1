@@ -9,25 +9,24 @@ import java.util.ArrayList;
 
 
 public class Alien {
-
-     private SpriteBatch batch;
-     private Texture alien;
-     private Sprite myAlien;
-     private int alienx = 70, alieny = 350;
-
-
-
-    ArrayList<Sprite> aliens2= new ArrayList<Sprite>();
+    boolean derecha= true;
+    private SpriteBatch batch;
+    private Texture alien;
+    private Sprite myAlien;
+    private int alienx = 70, alieny = 350;
 
 
-    void create(){
+    ArrayList<Sprite> aliens2 = new ArrayList<Sprite>();
+
+
+    void create() {
 
         for (int i = 0; i < 5; i++) {
 
             batch = new SpriteBatch();
             alien = new Texture("alien.png");
             myAlien = new Sprite(alien);
-            myAlien.setSize(70,70);
+            myAlien.setSize(70, 70);
             myAlien.setPosition(alienx, alieny);
 
             aliens2.add(myAlien);
@@ -46,16 +45,38 @@ public class Alien {
     public void moveAlien() {
         float alienXW = myAlien.getX() + myAlien.getWidth();
         float appGW = Gdx.app.getGraphics().getWidth();
-        if (myAlien.getX() > 0) {
+        float px = myAlien.getX();
+        float py = myAlien.getY();
+
+        //Mueve alien a la derecha y baja su Y
+        if(derecha){
+
             myAlien.translateX(-1.5f);
-            if (myAlien.getX() < 0) {
-                myAlien.translateY(-20f);
+
+            if (px<0){
+                derecha= !derecha;
+                myAlien.translateY(-20);
             }
-        } else if (myAlien.getX() > 0 && alienXW < appGW){
-            if (alienXW < appGW) {
-                myAlien.translateX(1.5f);
+        //Mueve alien a izquierda y baja su Y
+        }else{
+            myAlien.translateX(1.5f);
+
+            if (alienXW>appGW){
+                derecha= !derecha;
+                myAlien.translateY(-20);
             }
         }
+
+        //        if (myAlien.getX() > 0) {
+//            myAlien.translateX(-1.5f);
+//            if (myAlien.getX() < 0) {
+//                myAlien.translateY(-20f);
+//            }
+//        } else if (myAlien.getX() > 0 && alienXW < appGW) {
+//            if (alienXW < appGW) {
+//                myAlien.translateX(1.5f);
+//            }
+//        }
 //        else if (myAlien.getX() != appGW){
 //            myAlien.translateX(1.5f);
 //        }
@@ -71,13 +92,10 @@ public class Alien {
 //        }
     //}
 
-    void dispose () {
+    void dispose() {
         batch.dispose();
         alien.dispose();
     }
-
-
-
 
 
 }
