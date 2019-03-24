@@ -54,7 +54,7 @@ public class Alien {
             }
         }
     }
-
+// Hola
 //        myAlien.setX(1.5f);
 //        if((myAlien.getX() + myAlien.getWidth()) > Gdx.app.getGraphics().getWidth()) {
 //            myAlien.translateX(-1.5f);
