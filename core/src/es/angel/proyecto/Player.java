@@ -11,7 +11,6 @@ public class Player {
     private Texture ship;
     private Sprite myShip;
     private float shipX = 270, shipY = 10;
-    //hol
 
 
     public void create() {

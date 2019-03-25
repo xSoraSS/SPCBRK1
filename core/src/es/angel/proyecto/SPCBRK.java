@@ -11,12 +11,14 @@ public class SPCBRK extends ApplicationAdapter {
 
     Alien alien1 = new Alien();
     Player shipPlayer = new Player();
+    Ball ballBullet = new Ball();
 
 
     @Override
     public void create () {
         shipPlayer.create();
         alien1.create();
+        ballBullet.create();
     }
 
 
@@ -30,6 +32,7 @@ public class SPCBRK extends ApplicationAdapter {
         shipPlayer.moveNave();
         alien1.printarAlien();
         alien1.moveArmyAlien();
+        ballBullet.printarBall();
     }
 
     @Override
@@ -37,5 +40,6 @@ public class SPCBRK extends ApplicationAdapter {
         batch.dispose();
         shipPlayer.dispose();
         alien1.dispose();
+        ballBullet.dispose();
     }
 }
