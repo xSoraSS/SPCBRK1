@@ -27,8 +27,8 @@ public class SPCBRK extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shipPlayer.printarNave();
-        alien1.printarAlien();
         shipPlayer.moveNave();
+        alien1.printarAlien();
         alien1.moveArmyAlien();
     }
 

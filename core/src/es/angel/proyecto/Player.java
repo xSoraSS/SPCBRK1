@@ -33,12 +33,12 @@ public class Player {
         boolean derecha = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D);
         boolean mover = (izquierda != derecha);
         if(mover && izquierda){
-            myShip.translateX(-1.5f);
+            myShip.translateX(-2.5f);
             if (myShip.getX() < 0){
                 myShip.setX(0);
             }
         }else if (mover && derecha){
-            myShip.translateX(1.5f);
+            myShip.translateX(2.5f);
             if ((myShip.getX() + myShip.getWidth()) > Gdx.graphics.getWidth()){
                 myShip.setX(Gdx.graphics.getWidth() - myShip.getWidth());
             }
