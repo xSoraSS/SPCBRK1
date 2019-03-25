@@ -10,7 +10,7 @@ public class SPCBRK extends ApplicationAdapter {
     SpriteBatch batch;
 
     Alien alien1 = new Alien();
-    SpaceShip shipPlayer = new SpaceShip();
+    Player shipPlayer = new Player();
 
 
     @Override
