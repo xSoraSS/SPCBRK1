@@ -29,7 +29,7 @@ public class SPCBRK extends ApplicationAdapter {
         shipPlayer.printarNave();
         alien1.printarAlien();
         shipPlayer.moveNave();
-        alien1.moveAlien();
+        alien1.moveArmyAlien();
     }
 
     @Override

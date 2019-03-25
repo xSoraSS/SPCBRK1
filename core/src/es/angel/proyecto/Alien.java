@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 public class Alien {
-    boolean derecha= true;
+    boolean derecha = true;
     private SpriteBatch batch;
     private Texture alien;
     private Sprite myAlien;
@@ -18,7 +18,7 @@ public class Alien {
 
     ArrayList<Sprite> aliens2 = new ArrayList<Sprite>();
 
-
+//Crea los aliens utilizando un array
     void create() {
 
         for (int i = 0; i < 5; i++) {
@@ -42,55 +42,38 @@ public class Alien {
         }
     }
 
-    public void moveAlien() {
-        float alienXW = myAlien.getX() + myAlien.getWidth();
+    public void moveArmyAlien() {
         float appGW = Gdx.app.getGraphics().getWidth();
-        float px = myAlien.getX();
-        float py = myAlien.getY();
 
-        //Mueve alien a la derecha y baja su Y
-        if(derecha){
+        //Mueve todos los aliens a la derecha y baja sus Y
+        for (int i = 0; i < aliens2.size(); i++) {
+            float alienXW = aliens2.get(i).getX() + aliens2.get(i).getWidth();
+            float px = aliens2.get(i).getX();
+            float py = aliens2.get(i).getY();
+            if (derecha) {
 
-            myAlien.translateX(-1.5f);
+                aliens2.get(i).translateX(-3f);
 
-            if (px<0){
-                derecha= !derecha;
-                myAlien.translateY(-20);
-            }
-        //Mueve alien a izquierda y baja su Y
-        }else{
-            myAlien.translateX(1.5f);
+                if (px < 0) {
+                    derecha = !derecha;
+                    for (int j = 0; j < aliens2.size(); j++) {
+                        aliens2.get(j).translateY(-20);
+                    }
+                }
 
-            if (alienXW>appGW){
-                derecha= !derecha;
-                myAlien.translateY(-20);
+                //Mueve todos los aliens a la izquierda y baja sus Y
+            } else {
+                aliens2.get(i).translateX(3f);
+
+                if (alienXW > appGW) {
+                    derecha = !derecha;
+                    for (int j = 0; j < aliens2.size(); j++) {
+                        aliens2.get(j).translateY(-20);
+                    }
+                }
             }
         }
-
-        //        if (myAlien.getX() > 0) {
-//            myAlien.translateX(-1.5f);
-//            if (myAlien.getX() < 0) {
-//                myAlien.translateY(-20f);
-//            }
-//        } else if (myAlien.getX() > 0 && alienXW < appGW) {
-//            if (alienXW < appGW) {
-//                myAlien.translateX(1.5f);
-//            }
-//        }
-//        else if (myAlien.getX() != appGW){
-//            myAlien.translateX(1.5f);
-//        }
     }
-
-// Hola
-//        myAlien.setX(1.5f);
-//        if((myAlien.getX() + myAlien.getWidth()) > Gdx.app.getGraphics().getWidth()) {
-//            myAlien.translateX(-1.5f);
-//            if (myAlien.getX() < 0) {
-//                myAlien.setX(0);
-//            }
-//        }
-    //}
 
     void dispose() {
         batch.dispose();
