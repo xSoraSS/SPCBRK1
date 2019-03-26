@@ -13,7 +13,7 @@ public class Alien {
     private SpriteBatch batch;
     private Texture alien;
     private Sprite myAlien;
-    private int alienx = 70, alieny = 350;
+    private int alienx = 0, alieny = 350;
 
 
     ArrayList<Sprite> aliens2 = new ArrayList<Sprite>();

@@ -9,9 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Player {
     private SpriteBatch batch;
     private Texture ship;
-    private Sprite myShip;
+    public Sprite myShip;
     private float shipX = 270, shipY = 10;
-
 
     public void create() {
         batch = new SpriteBatch();

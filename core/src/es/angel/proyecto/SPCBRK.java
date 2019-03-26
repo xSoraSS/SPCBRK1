@@ -28,11 +28,15 @@ public class SPCBRK extends ApplicationAdapter {
         Gdx.gl.glClearColor(0.5f,0.5f, 0.5f, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        //printa y permite mover la nave
         shipPlayer.printarNave();
         shipPlayer.moveNave();
+        //printa y mueve los aliens de izquierda->derecha y de arriba->abajo
         alien1.printarAlien();
         alien1.moveArmyAlien();
+        //Printa y mueve la pelota en varias direcciones
         ballBullet.printarBall();
+        ballBullet.moveBall();
     }
 
     @Override
