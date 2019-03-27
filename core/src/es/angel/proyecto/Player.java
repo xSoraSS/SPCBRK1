@@ -5,12 +5,17 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
+
+import java.awt.*;
 
 public class Player {
     private SpriteBatch batch;
     private Texture ship;
     public Sprite myShip;
     private float shipX = 270, shipY = 10;
+    public Rectangle recPlayer;
+
 
     public void create() {
         batch = new SpriteBatch();
@@ -30,6 +35,7 @@ public class Player {
         boolean izquierda = Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A);
         boolean derecha = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D);
         boolean mover = (izquierda != derecha);
+        recPlayer = new Rectangle(myShip.getX(), myShip.getY(), myShip.getWidth(), myShip.getHeight());
         if(mover && izquierda){
             myShip.translateX(-2.5f);
             if (myShip.getX() < 0){
@@ -42,6 +48,7 @@ public class Player {
             }
         }
     }
+
 
         public void dispose () {
             batch.dispose();
