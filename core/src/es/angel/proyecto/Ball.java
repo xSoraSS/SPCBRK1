@@ -15,7 +15,7 @@ public class Ball {
     private SpriteBatch batch;
     private Texture ball;
     private Sprite pcBall;
-    private float ballX = 270, ballY = 50;
+    private float ballX, ballY;
     public Rectangle recBall;
     public Rectangle recPlayerB;
     public Player myPlayer = new Player();
@@ -36,6 +36,10 @@ public class Ball {
         batch.end();
     }
 
+
+    //ARREGLAR VALORES BALLX Y BALLY
+
+
     //Mueve la pelota
     public void moveBall(Rectangle recPlayer){
         recBall = new Rectangle(pcBall.getX(), pcBall.getY(), pcBall.getWidth(), pcBall.getHeight());
@@ -47,18 +51,18 @@ public class Ball {
                 pcBall.setX(0);
             }
 
-            if (recBall.overlaps(recPlayer)){
-                pcBall.translateX(-1);
+            if (recBall.overlaps(recPlayer) && pcBall.getY() > 0){
+                pcBall.translateY(ballY);
             }
 
             if (abajo){
-                pcBall.translateY(-5);
+                pcBall.translateY(-ballY);
                 if (pcBall.getY() < 0){
                     abajo = !abajo;
                     pcBall.setY(0);
                 }
             }else{
-                pcBall.translateY(5);
+                pcBall.translateY(ballY);
                 if (pcBall.getY() + pcBall.getHeight() > Gdx.graphics.getHeight()){
                 abajo = !abajo;
                 pcBall.setY(Gdx.graphics.getHeight() - pcBall.getHeight());
@@ -72,9 +76,11 @@ public class Ball {
                 izquierda = !izquierda;
                 pcBall.setX(Gdx.graphics.getWidth() - pcBall.getWidth());
             }
-            if (isOverlaping){
-                pcBall.translateX(1);
+
+            if (recBall.overlaps(recPlayer) && pcBall.getY() > 0){
+                pcBall.translateY(10);
             }
+
             if (abajo) {
                 pcBall.translateY(-5);
                 if (pcBall.getY() < 0) {
