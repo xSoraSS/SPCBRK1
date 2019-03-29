@@ -15,7 +15,7 @@ public class Ball {
     private SpriteBatch batch;
     private Texture ball;
     private Sprite pcBall;
-    private float ballX, ballY;
+    private float ballX = 270, ballY = 50;
     public Rectangle recBall;
     public Rectangle recPlayerB;
     public Player myPlayer = new Player();
@@ -36,10 +36,6 @@ public class Ball {
         batch.end();
     }
 
-
-    //ARREGLAR VALORES BALLX Y BALLY
-
-
     //Mueve la pelota
     public void moveBall(Rectangle recPlayer){
         recBall = new Rectangle(pcBall.getX(), pcBall.getY(), pcBall.getWidth(), pcBall.getHeight());
@@ -52,17 +48,17 @@ public class Ball {
             }
 
             if (recBall.overlaps(recPlayer) && pcBall.getY() > 0){
-                pcBall.translateY(ballY);
+                pcBall.translateY(10);
             }
 
             if (abajo){
-                pcBall.translateY(-ballY);
+                pcBall.translateY(-5);
                 if (pcBall.getY() < 0){
                     abajo = !abajo;
                     pcBall.setY(0);
                 }
             }else{
-                pcBall.translateY(ballY);
+                pcBall.translateY(5);
                 if (pcBall.getY() + pcBall.getHeight() > Gdx.graphics.getHeight()){
                 abajo = !abajo;
                 pcBall.setY(Gdx.graphics.getHeight() - pcBall.getHeight());
@@ -77,7 +73,7 @@ public class Ball {
                 pcBall.setX(Gdx.graphics.getWidth() - pcBall.getWidth());
             }
 
-            if (recBall.overlaps(recPlayer) && pcBall.getY() > 0){
+            if (recBall.overlaps(recPlayer)){
                 pcBall.translateY(10);
             }
 
