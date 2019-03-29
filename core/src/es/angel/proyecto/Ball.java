@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
+
 import java.awt.*;
 
 public class Ball {
@@ -48,7 +49,8 @@ public class Ball {
             }
 
             if (recBall.overlaps(recPlayer) && pcBall.getY() > 0){
-                pcBall.translateY(10);
+                abajo = !abajo;
+                pcBall.translateY(5);
             }
 
             if (abajo){
@@ -72,6 +74,12 @@ public class Ball {
                 izquierda = !izquierda;
                 pcBall.setX(Gdx.graphics.getWidth() - pcBall.getWidth());
             }
+
+            if (recBall.overlaps(recPlayer) && pcBall.getY() > 0){
+                abajo = !abajo;
+                pcBall.translateY(-5);
+            }
+
 
             if (recBall.overlaps(recPlayer)){
                 pcBall.translateY(10);

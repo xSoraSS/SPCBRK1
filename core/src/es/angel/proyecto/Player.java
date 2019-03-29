@@ -37,12 +37,12 @@ public class Player {
         boolean mover = (izquierda != derecha);
         recPlayer = new Rectangle(myShip.getX(), myShip.getY(), myShip.getWidth(), myShip.getHeight());
         if(mover && izquierda){
-            myShip.translateX(-2.5f);
+            myShip.translateX(-3f);
             if (myShip.getX() < 0){
                 myShip.setX(0);
             }
         }else if (mover && derecha){
-            myShip.translateX(2.5f);
+            myShip.translateX(3f);
             if ((myShip.getX() + myShip.getWidth()) > Gdx.graphics.getWidth()){
                 myShip.setX(Gdx.graphics.getWidth() - myShip.getWidth());
             }
