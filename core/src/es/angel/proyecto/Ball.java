@@ -4,22 +4,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Ball {
     boolean izquierda = true;
     boolean abajo = true;
-    boolean isOverlaping;
     private SpriteBatch batch;
     private Texture ball;
     private Sprite pcBall;
     private float ballX = 270, ballY = 50;
     public Rectangle recBall;
-    public Rectangle recPlayerB;
-    public Player myPlayer = new Player();
+
 
     //Crea la pelota
     public void create() {
@@ -38,8 +38,15 @@ public class Ball {
     }
 
     //Mueve la pelota
-    public void moveBall(Rectangle recPlayer){
+    public void moveBall(Rectangle recPlayer, ArrayList recA, Rectangle recAlien){
         recBall = new Rectangle(pcBall.getX(), pcBall.getY(), pcBall.getWidth(), pcBall.getHeight());
+
+        ShapeRenderer shapeRenderer;
+        shapeRenderer = new ShapeRenderer();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.rect(recBall.getX(), recBall.getY(), recBall.getWidth(), recBall.getHeight());
+        shapeRenderer.end();
+
         //Mueve la pelota hacia la izquierda y la hace rebotar arriba y abajo
         if (izquierda){
             pcBall.translateX(-5);
@@ -52,6 +59,14 @@ public class Ball {
                 abajo = !abajo;
                 pcBall.translateY(5);
             }
+
+
+                if (recBall.overlaps(recAlien) && pcBall.getY() > 0){
+                    abajo = !abajo;
+                    pcBall.translateY(-50);
+
+            }
+
 
             if (abajo){
                 pcBall.translateY(-5);

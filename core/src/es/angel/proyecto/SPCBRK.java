@@ -36,7 +36,7 @@ public class SPCBRK extends ApplicationAdapter {
         alien1.moveArmyAlien();
         //Printa y mueve la pelota en varias direcciones
         ballBullet.printarBall();
-        ballBullet.moveBall(shipPlayer.recPlayer);
+        ballBullet.moveBall(shipPlayer.recPlayer, alien1.recA, alien1.recAlien);
     }
 
     @Override
