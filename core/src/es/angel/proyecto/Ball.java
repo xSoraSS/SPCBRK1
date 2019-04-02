@@ -60,7 +60,7 @@ public class Ball {
                 pcBall.translateY(5);
             }
 
-
+                //LOGRAR QUE REBOTE LA PELOTA EN TODOS LOS ALIENS
                 if (recBall.overlaps(recAlien) && pcBall.getY() > 0){
                     abajo = !abajo;
                     pcBall.translateY(-5);
