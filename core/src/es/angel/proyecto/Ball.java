@@ -63,7 +63,7 @@ public class Ball {
 
                 if (recBall.overlaps(recAlien) && pcBall.getY() > 0){
                     abajo = !abajo;
-                    pcBall.translateY(-50);
+                    pcBall.translateY(-5);
 
             }
 
