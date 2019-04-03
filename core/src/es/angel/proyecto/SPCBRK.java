@@ -9,16 +9,23 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class SPCBRK extends ApplicationAdapter {
     SpriteBatch batch;
 
-    Alien alien1 = new Alien();
-    Player shipPlayer = new Player();
-    Ball ballBullet = new Ball();
+    AlienArmy alienArmy;
+    Player player;
+    Ball ball;
+    CheckCollisions checkCollisions;
 
 
     @Override
     public void create () {
-        shipPlayer.create();
-        alien1.create();
-        ballBullet.create();
+
+        alienArmy = new AlienArmy();
+        player = new Player();
+        ball = new Ball();
+        checkCollisions = new CheckCollisions();
+
+        player.create();
+        alienArmy.create();
+        ball.create();
     }
 
 
@@ -28,22 +35,28 @@ public class SPCBRK extends ApplicationAdapter {
         Gdx.gl.glClearColor(0.5f,0.5f, 0.5f, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        //printa y permite mover la nave
-        shipPlayer.printarNave();
-        shipPlayer.moveNave();
-        //printa y mueve los aliens de izquierda->derecha y de arriba->abajo
-        alien1.printarAlien();
-        alien1.moveArmyAlien();
-        //Printa y mueve la pelota en varias direcciones
-        ballBullet.printarBall();
-        ballBullet.moveBall(shipPlayer.recPlayer, alien1.recA, alien1.recAlien);
+        update();
+
+
+        player.render();
+        alienArmy.render();
+        ball.render();
     }
+
+    void update(){
+        player.update();
+        alienArmy.update();
+        ball.update(player, alienArmy);
+        checkCollisions.checkcollisionsBall(ball, player, alienArmy);
+
+    }
+
 
     @Override
     public void dispose () {
         batch.dispose();
-        shipPlayer.dispose();
-        alien1.dispose();
-        ballBullet.dispose();
+        player.dispose();
+        alienArmy.dispose();
+        ball.dispose();
     }
 }

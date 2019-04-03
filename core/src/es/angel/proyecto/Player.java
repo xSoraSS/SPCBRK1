@@ -1,21 +1,17 @@
 package es.angel.proyecto;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-
-import java.awt.*;
 
 public class Player {
     private SpriteBatch batch;
     private Texture ship;
     public Sprite myShip;
     private float shipX = 270, shipY = 10;
-    public Rectangle recPlayer;
-
+    public Rectangle rectangle;
 
     public void create() {
         batch = new SpriteBatch();
@@ -25,23 +21,23 @@ public class Player {
         myShip.setSize(ship.getWidth(), ship.getHeight());
     }
 
-    public void printarNave() {
+    public void render() {
         batch.begin();
         myShip.draw(batch);
         batch.end();
     }
 
-    public void moveNave() {
-        boolean izquierda = Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A);
-        boolean derecha = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D);
-        boolean mover = (izquierda != derecha);
-        recPlayer = new Rectangle(myShip.getX(), myShip.getY(), myShip.getWidth(), myShip.getHeight());
-        if(mover && izquierda){
+    public void update() {
+
+        rectangle = new Rectangle(myShip.getX(), myShip.getY(), myShip.getWidth(), myShip.getHeight());
+        if (Controls.isLeftPressed()){
             myShip.translateX(-3f);
             if (myShip.getX() < 0){
                 myShip.setX(0);
             }
-        }else if (mover && derecha){
+        }
+
+        if (Controls.isRightPressed()){
             myShip.translateX(3f);
             if ((myShip.getX() + myShip.getWidth()) > Gdx.graphics.getWidth()){
                 myShip.setX(Gdx.graphics.getWidth() - myShip.getWidth());
@@ -50,8 +46,8 @@ public class Player {
     }
 
 
-        public void dispose () {
-            batch.dispose();
-            ship.dispose();
-        }
+    public void dispose () {
+        batch.dispose();
+        ship.dispose();
     }
+}
