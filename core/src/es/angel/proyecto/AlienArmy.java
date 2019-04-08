@@ -17,7 +17,7 @@ public class AlienArmy {
     private SpriteBatch batch;
     private Texture alien;
     private Sprite myAlien;
-    private int alienx = 0, alieny = 350;
+    private int alienx = 150, alieny = 350;
 
     ArrayList<Sprite> aliens = new ArrayList<Sprite>();
 
@@ -28,7 +28,7 @@ public class AlienArmy {
 
         alien = new Texture("alien.png");
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             batch = new SpriteBatch();
             myAlien = new Sprite(alien);
             myAlien.setSize(70, 70);
