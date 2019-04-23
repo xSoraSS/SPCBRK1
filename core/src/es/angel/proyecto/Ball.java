@@ -13,7 +13,7 @@ public class Ball {
     public SpriteBatch batch;
     public Texture ball;
     public Sprite pcBall;
-    public float ballX = 270, ballY = 50;
+    public float ballX = 20, ballY = 360;
     public Rectangle rectBall;
     ShapeRenderer shapeRenderer;
 
