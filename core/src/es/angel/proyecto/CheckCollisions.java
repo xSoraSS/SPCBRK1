@@ -65,7 +65,7 @@ public class CheckCollisions {
                     ball.pcBall.setY(0);
                 }
 
-
+                //PELOTA REBOTA ALIEN
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
                     float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
@@ -82,6 +82,8 @@ public class CheckCollisions {
                     ball.pcBall.translateY(7);
                     ball.abajo = !ball.abajo;
                 }
+
+                //PELOTA REBOTA ALIEN
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
                     float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
@@ -122,6 +124,7 @@ public class CheckCollisions {
                     ball.pcBall.setY(0);
                 }
 
+                //PELOTA REBOTA ALIEN
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
                     float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
@@ -140,6 +143,8 @@ public class CheckCollisions {
                     ball.abajo = !ball.abajo;
                     ball.pcBall.setY(Gdx.graphics.getHeight() - ball.pcBall.getHeight());
                 }
+
+                //PELOTA REBOTA ALIEN
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
                     float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
