@@ -8,8 +8,11 @@ public class CheckCollisions {
 
     void checkcollisionsBall(Ball ball, Player player, AlienArmy alienArmy) {
         float ballHW = ball.pcBall.getHeight() + ball.pcBall.getWidth();
+//        for (int i = 0; i < alienArmy.aliens.size(); i++) {
+//            System.out.println(alienArmy.aliens.get(i).getWidth());
+//        }
         if (ball.izquierda) {
-            ball.pcBall.translateX(-3);
+            ball.pcBall.translateX(-5);
             if (ball.pcBall.getX() < 0) {
                 ball.izquierda = !ball.izquierda;
                 ball.pcBall.setX(0);
@@ -94,20 +97,21 @@ public class CheckCollisions {
                         ball.abajo = !ball.abajo;
                     }
 
-//                  if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() + ballHW > alienRecHW){
+//                  if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() - 32 < alienArmy.aliens.get(i).getX()ball.pcBall.getX() - 32 < alienArmy.aliens.get(i).getX()){
 //                        ball.izquierda = !ball.izquierda;
 //                    }
 
-                    if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() < alienArmy.aliens.get(i).getX()){
+                    if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() > (alienRecH - alienRecW)){
+                        System.out.println("XBALL   " + ball.pcBall.getX() + "   XALIEN   " + alienArmy.aliens.get(i).getX());
                         ball.izquierda = !ball.izquierda;
-                        alienArmy.aliens.get(i).translateY(2000);
+                        alienArmy.aliens.remove(i);
                     }
                 }
             }
 
             //Mueve la pelota hacia la derecha y la hace rebotar arriba y abajo
         } else {
-            ball.pcBall.translateX(3);
+            ball.pcBall.translateX(5);
             if ((ball.pcBall.getX() + ball.pcBall.getWidth()) > Gdx.graphics.getWidth()) {
                 ball.izquierda = !ball.izquierda;
             }
