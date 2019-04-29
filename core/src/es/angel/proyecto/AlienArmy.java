@@ -61,28 +61,28 @@ public class AlienArmy {
                shapeRenderer.end();
             }
 
-//            if (derecha) {
-//
-//                aliens.get(i).translateX(-3f);
-//
-//                if (aliens.get(i).getX() < 0) {
-//                    derecha = !derecha;
-//                    for (int j = 0; j < aliens.size(); j++) {
-//                        aliens.get(j).translateY(-20);
-//                    }
-//                }
-//
-//                //Mueve todos los aliens a la izquierda y baja sus Y
-//            } else {
-//                aliens.get(i).translateX(3f);
-//
-//                if (aliens.get(i).getX() + aliens.get(i).getWidth() > appGW) {
-//                    derecha = !derecha;
-//                    for (int j = 0; j < aliens.size(); j++) {
-//                        aliens.get(j).translateY(-20);
-//                    }
-//                }
-//            }
+            if (derecha) {
+
+                aliens.get(i).translateX(-3f);
+
+                if (aliens.get(i).getX() < 0) {
+                    derecha = !derecha;
+                    for (int j = 0; j < aliens.size(); j++) {
+                        aliens.get(j).translateY(-20);
+                    }
+                }
+
+                //Mueve todos los aliens a la izquierda y baja sus Y
+            } else {
+                aliens.get(i).translateX(3f);
+
+                if (aliens.get(i).getX() + aliens.get(i).getWidth() > appGW) {
+                    derecha = !derecha;
+                    for (int j = 0; j < aliens.size(); j++) {
+                        aliens.get(j).translateY(-20);
+                    }
+                }
+            }
         }
     }
 

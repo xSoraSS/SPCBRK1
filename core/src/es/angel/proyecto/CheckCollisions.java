@@ -8,9 +8,7 @@ public class CheckCollisions {
 
     void checkcollisionsBall(Ball ball, Player player, AlienArmy alienArmy) {
         float ballHW = ball.pcBall.getHeight() + ball.pcBall.getWidth();
-//        for (int i = 0; i < alienArmy.aliens.size(); i++) {
-//            System.out.println(alienArmy.aliens.get(i).getWidth());
-//        }
+
         if (ball.izquierda) {
             ball.pcBall.translateX(-5);
             if (ball.pcBall.getX() < 0) {
@@ -26,83 +24,41 @@ public class CheckCollisions {
                 ball.izquierda = !ball.izquierda;
             }
 
-            // LOGRAR QUE REBOTE LA PELOTA EN TODOS LOS ALIENS
-//            for (int i = 0; i < alienArmy.aliens.size(); i++) {
-//
-//                float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
-//                Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
-//
-//                if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getY() > 0) {
-//                    ball.abajo = !ball.abajo;
-//                    ball.pcBall.translateY(-5);
-//                } else if (ball.rectBall.overlaps(rectAlien) && ballHW >= alienRecHW) {
-//                    ball.abajo = !ball.abajo;
-//                    ball.pcBall.translateY(5);
-//                }
-//            }
-//
-//
-//                for (int i = 0; i < alienArmy.aliens.size(); i++) {
-//
-//                    float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
-//                    Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
-//
-//                        if (ball.rectBall.overlaps(rectAlien) && ballHW * ball.pcBall.getY() > 1) {
-//                            ball.abajo = !ball.abajo;
-//                        }
-//                        if (ball.rectBall.overlaps(rectAlien) && ballHW < alienArmy.aliens.get(i).getY() + alienArmy.aliens.get(i).getWidth()){
-//                            ball.abajo = !ball.abajo;
-//                    }
-//                }
-
-
-
-
-
-
-
             if (ball.abajo) {
-//                ball.pcBall.translateY(-5);
-//                if (ball.pcBall.getY() < 0) {
-//                    ball.abajo = !ball.abajo;
-//                    ball.pcBall.setY(0);
-//                }
+                ball.pcBall.translateY(-5);
+                if (ball.pcBall.getY() < 0) {
+                    ball.abajo = !ball.abajo;
+                    ball.pcBall.setY(0);
+                }
 
                 //REBOTE ARRIBA ALIEN
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
-                    float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
                     Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
 
                     if (ball.rectBall.overlaps(rectAlien) && ballHW * ball.pcBall.getY() > 1) {
                         ball.abajo = !ball.abajo;
+                        alienArmy.aliens.remove(i);
                     }
 
                 }
             } else {
-//                ball.pcBall.translateY(5);
-//                if (ball.pcBall.getY() + ball.pcBall.getHeight() > Gdx.graphics.getHeight()) {
-//                    ball.pcBall.translateY(7);
-//                    ball.abajo = !ball.abajo;
-//                }
+                ball.pcBall.translateY(5);
+                if (ball.pcBall.getY() + ball.pcBall.getHeight() > Gdx.graphics.getHeight()) {
+                    ball.pcBall.translateY(7);
+                    ball.abajo = !ball.abajo;
+                }
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
-                    float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
-                    float alienRecH = alienArmy.aliens.get(i).getHeight();
-                    float alienRecW = alienArmy.aliens.get(i).getWidth();
                     Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
 
                     if (ball.rectBall.overlaps(rectAlien) && ballHW + ball.pcBall.getY() < alienArmy.aliens.get(i).getY() + alienArmy.aliens.get(i).getWidth()){
                         ball.pcBall.translateY(-10);
                         ball.abajo = !ball.abajo;
+                        alienArmy.aliens.remove(i);
                     }
 
-//                  if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() - 32 < alienArmy.aliens.get(i).getX()ball.pcBall.getX() - 32 < alienArmy.aliens.get(i).getX()){
-//                        ball.izquierda = !ball.izquierda;
-//                    }
-
-                    if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() > (alienRecH - alienRecW)){
-                        System.out.println("XBALL   " + ball.pcBall.getX() + "   XALIEN   " + alienArmy.aliens.get(i).getX());
+                    if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() > alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth()){
                         ball.izquierda = !ball.izquierda;
                         alienArmy.aliens.remove(i);
                     }
@@ -115,58 +71,64 @@ public class CheckCollisions {
             if ((ball.pcBall.getX() + ball.pcBall.getWidth()) > Gdx.graphics.getWidth()) {
                 ball.izquierda = !ball.izquierda;
             }
-//
-//
-//            if (ball.rectBall.overlaps(player.rectangle) && Controls.isLeftPressed()){
-//                ball.izquierda = !ball.izquierda;
-//            }
-//
-//            if (ball.rectBall.overlaps(player.rectangle) && ball.pcBall.getY() > 0) {
-//                ball.abajo = !ball.abajo;
-//            }
-//
-//
-//            if (ball.rectBall.overlaps(player.rectangle)) {
-//                ball.pcBall.translateY(10);
-//            }
-//
-//            if (ball.abajo) {
-//                ball.pcBall.translateY(-5);
-//                if (ball.pcBall.getY() < 0) {
-//                    ball.abajo = !ball.abajo;
-//                    ball.pcBall.setY(0);
-//                }
-//
-//                //REBOTE ARRIBA ALIEN
-//                for (int i = 0; i < alienArmy.aliens.size(); i++) {
-//
-//                    float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
-//                    Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
-//
-//                    if (ball.rectBall.overlaps(rectAlien) && ballHW * ball.pcBall.getY() > 1) {
-//                        ball.pcBall.translateY(7);
-//                        ball.abajo = !ball.abajo;
-//                    }
-//
-//                }
-//
-//            } else {
-//                ball.pcBall.translateY(5);
-//                if (ball.pcBall.getY() + ball.pcBall.getHeight() > Gdx.graphics.getHeight()) {
-//                    ball.abajo = !ball.abajo;
-//                    ball.pcBall.setY(Gdx.graphics.getHeight() - ball.pcBall.getHeight());
+
+
+            if (ball.rectBall.overlaps(player.rectangle) && Controls.isLeftPressed()){
+                ball.izquierda = !ball.izquierda;
+            }
+
+            if (ball.rectBall.overlaps(player.rectangle) && ball.pcBall.getY() > 0) {
+                ball.abajo = !ball.abajo;
+            }
+
+
+            if (ball.rectBall.overlaps(player.rectangle)) {
+                ball.pcBall.translateY(10);
+            }
+
+            if (ball.abajo) {
+                ball.pcBall.translateY(-5);
+                if (ball.pcBall.getY() < 0) {
+                    ball.abajo = !ball.abajo;
+                    ball.pcBall.setY(0);
+                }
+
+                //REBOTE ARRIBA ALIEN
+                for (int i = 0; i < alienArmy.aliens.size(); i++) {
+
+                    Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
+
+                    if (ball.rectBall.overlaps(rectAlien) && ballHW * ball.pcBall.getY() > 1) {
+                        ball.pcBall.translateY(7);
+                        ball.abajo = !ball.abajo;
+                        alienArmy.aliens.remove(i);
+                    }
+
+                }
+
+            } else {
+                ball.pcBall.translateY(5);
+                if (ball.pcBall.getY() + ball.pcBall.getHeight() > Gdx.graphics.getHeight()) {
+                    ball.abajo = !ball.abajo;
+                    ball.pcBall.setY(Gdx.graphics.getHeight() - ball.pcBall.getHeight());
         }
-//                for (int i = 0; i < alienArmy.aliens.size(); i++) {
-//
-//                    float alienRecHW = alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth();
-//                    Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
-//
-//                    if (ball.rectBall.overlaps(rectAlien) && ballHW < alienArmy.aliens.get(i).getY() + alienArmy.aliens.get(i).getWidth()){
-//                        ball.pcBall.translateY(-7);
-//                        ball.abajo = !ball.abajo;
-//                    }
-//                }
-//            }
-//        }
+                for (int i = 0; i < alienArmy.aliens.size(); i++) {
+
+                    Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
+
+                    if (ball.rectBall.overlaps(rectAlien) && ballHW < alienArmy.aliens.get(i).getY() + alienArmy.aliens.get(i).getWidth()){
+                        ball.pcBall.translateY(-7);
+                        ball.abajo = !ball.abajo;
+                        alienArmy.aliens.remove(i);
+                    }
+
+
+                    if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() > alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth()){
+                        ball.izquierda = !ball.izquierda;
+                        alienArmy.aliens.remove(i);
+                    }
+                }
+            }
+        }
     }
 }
