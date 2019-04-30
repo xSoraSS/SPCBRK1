@@ -39,6 +39,7 @@ public class CheckCollisions {
                     if (ball.rectBall.overlaps(rectAlien) && ballHW * ball.pcBall.getY() > 1) {
                         ball.abajo = !ball.abajo;
                         alienArmy.aliens.remove(i);
+                        System.out.println("1");
                     }
 
                 }
@@ -47,20 +48,22 @@ public class CheckCollisions {
                 if (ball.pcBall.getY() + ball.pcBall.getHeight() > Gdx.graphics.getHeight()) {
                     ball.pcBall.translateY(7);
                     ball.abajo = !ball.abajo;
+                    System.out.println("2");
                 }
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
                     Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
 
                     if (ball.rectBall.overlaps(rectAlien) && ballHW + ball.pcBall.getY() < alienArmy.aliens.get(i).getY() + alienArmy.aliens.get(i).getWidth()){
-                        ball.pcBall.translateY(-10);
+//                        ball.pcBall.translateY(-10);
                         ball.abajo = !ball.abajo;
-                        alienArmy.aliens.remove(i);
+                        System.out.println("3");
                     }
 
                     if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() > alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth()){
                         ball.izquierda = !ball.izquierda;
                         alienArmy.aliens.remove(i);
+                        System.out.println("4");
                     }
                 }
             }
@@ -100,8 +103,9 @@ public class CheckCollisions {
 
                     if (ball.rectBall.overlaps(rectAlien) && ballHW * ball.pcBall.getY() > 1) {
                         ball.pcBall.translateY(7);
-                        ball.abajo = !ball.abajo;
+                        ball.izquierda = !ball.izquierda;
                         alienArmy.aliens.remove(i);
+                        System.out.println("6");
                     }
 
                 }
@@ -111,21 +115,16 @@ public class CheckCollisions {
                 if (ball.pcBall.getY() + ball.pcBall.getHeight() > Gdx.graphics.getHeight()) {
                     ball.abajo = !ball.abajo;
                     ball.pcBall.setY(Gdx.graphics.getHeight() - ball.pcBall.getHeight());
-        }
+                }
                 for (int i = 0; i < alienArmy.aliens.size(); i++) {
 
                     Rectangle rectAlien = alienArmy.aliens.get(i).getBoundingRectangle();
 
                     if (ball.rectBall.overlaps(rectAlien) && ballHW < alienArmy.aliens.get(i).getY() + alienArmy.aliens.get(i).getWidth()){
                         ball.pcBall.translateY(-7);
-                        ball.abajo = !ball.abajo;
-                        alienArmy.aliens.remove(i);
-                    }
-
-
-                    if (ball.rectBall.overlaps(rectAlien) && ball.pcBall.getX() > alienArmy.aliens.get(i).getHeight() + alienArmy.aliens.get(i).getWidth()){
                         ball.izquierda = !ball.izquierda;
                         alienArmy.aliens.remove(i);
+                        System.out.println("7");
                     }
                 }
             }

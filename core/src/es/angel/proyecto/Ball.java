@@ -41,7 +41,6 @@ public class Ball {
     public void update(Player player, AlienArmy alienArmy){
         rectBall = new Rectangle(pcBall.getX(), pcBall.getY(), pcBall.getWidth(), pcBall.getHeight());
 
-
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         shapeRenderer.rect(rectBall.getX(), rectBall.getY(), rectBall.getWidth(), rectBall.getHeight());
         shapeRenderer.end();

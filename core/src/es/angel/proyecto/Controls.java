@@ -11,4 +11,12 @@ public class Controls {
     static boolean isRightPressed(){
         return Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D);
     }
+
+    static boolean isUpPressed(){
+        return Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W);
+    }
+
+    static boolean isDownPressed(){
+        return Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S);
+    }
 }
